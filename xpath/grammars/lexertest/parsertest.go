@@ -117,7 +117,7 @@ func checkBoolResultInternal(
 		EnableValidation().SetDebug(debug).Run()
 	actResult, err := res.GetBoolResult()
 	if err != nil {
-		t.Logf(mach.PrintMachine())
+		t.Log(mach.PrintMachine())
 		t.Fatalf("Unexpected error getting boolean result for %s: %s\n",
 			mach.GetExpr(), err.Error())
 		return
@@ -160,7 +160,7 @@ func checkLiteralResultInternal(
 	res := xpath.NewCtxFromMach(mach, currentNode).EnableValidation().Run()
 	actResult, err := res.GetLiteralResult()
 	if err != nil {
-		t.Logf(mach.PrintMachine())
+		t.Log(mach.PrintMachine())
 		t.Fatalf("Unexpected error getting literal result for %s: %s\n",
 			mach.GetExpr(), err.Error())
 		return
@@ -295,7 +295,7 @@ func checkNodeSetResultInternal(
 		EnableValidation().SetDebug(debug).Run()
 	actResult, err := res.GetNodeSetResult()
 	if err != nil {
-		t.Logf(mach.PrintMachine())
+		t.Log(mach.PrintMachine())
 		t.Fatalf("Unexpected error getting nodeset result for %s: %s\n",
 			mach.GetExpr(), err.Error())
 		return
@@ -309,7 +309,7 @@ func checkNodeSetResultInternal(
 	}
 
 	if err := testNodesetsEqual(expSlice, actResult); err != nil {
-		t.Logf(mach.PrintMachine())
+		t.Log(mach.PrintMachine())
 		t.Fatalf("Wrong nodeset result for '%s': %s",
 			mach.GetExpr(), err.Error())
 		return

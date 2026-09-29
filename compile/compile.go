@@ -1052,7 +1052,7 @@ func xmlPathString(path []xml.Name) string {
 	if len(path) == 0 {
 		return ""
 	}
-	fmt.Fprintf(buf, getxmlname(path[0]))
+	fmt.Fprint(buf, getxmlname(path[0]))
 	for _, elem := range path[1:] {
 		fmt.Fprintf(buf, "/%s", getxmlname(elem))
 	}
