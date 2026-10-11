@@ -32,7 +32,7 @@ override_dh_auto_install:
 override_dh_auto_test:
 	dh_auto_test -- $(GORACE) $(GOCOVER)
 
-# We do not vet vendor code.
+# NuDanOS: vet every Go package, vendored code included
 # Unlike for build, where it seems dh_golang uses the DH_GO_GENERATE flag,
 # it appears that we need to run go generate explicitly here now (in Go1.11
 # and/or previous dh_golang versions we didn't).
@@ -48,5 +48,5 @@ vet:
 		cd $(CURDIR)/$(GOBUILDDIR)/src/github.com/danos/yang/xpath/grammars/path_eval; \
 		go generate;cd -; \
 		GOPATH=$(CURDIR)/$(GOBUILDDIR) go vet -composites=false $$(find . -type f -name \*.go | \
-		xargs dirname | sort -u | grep $(GOBUILDDIR) | grep -v "/vendor/"); \
+		xargs dirname | sort -u | grep $(GOBUILDDIR)); \
 	fi
